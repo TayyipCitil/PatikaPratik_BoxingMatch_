@@ -36,7 +36,12 @@ public class Match {
     void startMatch() {
         if (wighDay()) {
             for (int i = 1; i <= this.round; i++) {
-                if (this.boxerBlue.health <= 0) {
+
+                if((this.boxerBlue.health <= 0&&this.boxerRed.health <= 0)||(i==12 && this.boxerBlue.health > 0 && this.boxerRed.health > 0)) {
+                    System.out.println("Müsabaka bitti.");
+                    System.out.println("Beraberlik");
+                    break;
+                }else if (this.boxerBlue.health <= 0) {
                     System.out.println("Müsabaka bitti.");
                     System.out.println("Kazanan:" + this.boxerRed.name);
                     break;
@@ -48,8 +53,16 @@ public class Match {
                     this.boxerBlue.health -= this.boxerRed.damage;
                     this.boxerRed.health -= this.boxerBlue.damage;
                     System.out.println("Round: " + i);
+                    if(this.boxerBlue.health>=0){
                     System.out.println(this.boxerBlue.name + "'in sağlığı :" + this.boxerBlue.health);
+                    }else{
+                        System.out.println(this.boxerBlue.name + "'in sağlığı :" + 0);
+                    }
+                    if(this.boxerRed.health>=0){
                     System.out.println(this.boxerRed.name + "'in sağlığı :" + this.boxerRed.health);
+                    }else{
+                        System.out.println(this.boxerRed.name + "'in sağlığı :" + 0);
+                    }
                 }
             }
         } else {
